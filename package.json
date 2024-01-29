@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-hamburgueria",
+  "version": "1.0.0",
+  "description": "- Criar uma nova branch chamada dev/rafa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
