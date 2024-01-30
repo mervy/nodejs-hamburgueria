@@ -1,0 +1,26 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/*https://colorhunt.co/*/
+:root {
+    --cor-1: #dcf2f1;
+    --cor-2: #7fc7d9;
+    --cor-3: #365486;
+    --cor-4: #0f1035;
+}
+
+* {    
+    color: var(--cor-1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: var(--cor-4);
+    padding: 0;
+    margin: 0;
+    
+}
+
+footer {
+    border-top: 2px solid var(--cor-4);
+}

@@ -1,11 +1,24 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-dotenv.config()
+const express = require('express')
+const exphbs = require('express-handlebars')
+const path = require('path')
+const app = express()
+const port = process.env.PORT || 3000
 
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log('Database MONGO DB ATLAS connected'))
+app.use(express.static('public'))
 
-mongoose.connection.on('error', err => {
-    console.log(`DB connection error: ${err.message}`)
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', exphbs.engine({ 
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    partialsDir: path.join(__dirname, 'views', 'partials')
+}));
+
+app.get('/', (req, res) => {
+    res.render('home', { layout: 'main' })
+})
+
+app.listen(port, () => {
+    console.log(`Server running in port: ${port}`)
 })
