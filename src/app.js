@@ -1,11 +1,13 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-dotenv.config()
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log('Database MONGO DB ATLAS connected'))
+app.use(express.static('public'))
 
-mongoose.connection.on('error', err => {
-    console.log(`DB connection error: ${err.message}`)
+app.get('/', (req, res) => {
+    res.send('Hello World')
+})
+
+app.listen(port, () => {
+    console.log(`Server running in port: ${port}`)
 })
