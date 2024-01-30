@@ -5,6 +5,34 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
 });
 
-const User = mongoose.model('User', userSchema);
+const burgerSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    promotion: {
+        type: String,
+        default: null,
+    },
+    stock: {
+        type: Number,
+        required: true,
+    },
+});
 
-module.exports = User;
+const User = mongoose.model('User', userSchema);
+const Burger = mongoose.model('Burger', burgerSchema);
+
+module.exports = {User, Burger};
