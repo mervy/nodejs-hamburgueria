@@ -16,7 +16,10 @@ app.engine('hbs', exphbs.engine({
 }));
 
 app.get('/', (req, res) => {
-    res.render('home', { layout: 'main' })
+    res.render('home', { title: 'Página Inicialmain' })
+})
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Login page' })
 })
 
 app.listen(port, () => {
