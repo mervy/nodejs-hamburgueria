@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/burgers');
 const bcrypt = require('bcrypt');
 
 exports.getLogin = (req, res) => {

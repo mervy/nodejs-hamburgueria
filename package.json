@@ -4,15 +4,18 @@
   "description": "- Criar uma nova branch chamada dev/rafa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
     "handlebars": "^4.7.8",
     "mongoose": "^8.1.1",
     "nodemon": "^3.0.3"

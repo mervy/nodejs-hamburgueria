@@ -1,0 +1,35 @@
+{{>header}}
+
+<div class="container col-6">
+    <h2>Create User</h2>
+
+    <section id="message">
+        {{#if session.successMessage}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{session.successMessage}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+    </section>
+
+    <form action="/create" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="username" aria-describedby="username">
+
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" placeholder="Your e-mail"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
+
+</div>
+
+{{>footer}}
