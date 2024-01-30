@@ -24,8 +24,8 @@ const burgerSchema = new mongoose.Schema({
         required: true,
     },
     promotion: {
-        type: String,
-        default: null,
+        type: Boolean,
+        default: false,
     },
     stock: {
         type: Number,
