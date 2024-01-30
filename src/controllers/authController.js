@@ -1,9 +1,26 @@
+const User = require('../models/user');
+const bcrypt = require('bcrypt');
+
 exports.getLogin = (req, res) => {
     res.render('login');
 };
 
-exports.postLogin =  (req, res) => {
-    res.redirect('/user/dashboard');
+exports.postLogin = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findOne({ username });
+
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.redirect('/auth/login');
+        }
+
+        req.session.userId = user._id;
+        res.redirect('/user/dashboard');
+    } catch (error) {
+        console.error(error);
+        res.redirect('/auth/login');
+    }
 };
 
 exports.logout = (req, res) => {
