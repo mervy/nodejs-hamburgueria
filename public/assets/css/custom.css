@@ -9,8 +9,7 @@
     --cor-4: #0f1035;
 }
 
-* {
-    color: var(--cor-1);
+* {   
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,10 +17,12 @@ header {
     background-color: var(--cor-3);
     padding: 0;
     margin: 0;
+    color: var(--cor-1);
 }
 
 footer {
     background-color: var(--cor-3);
+    color: var(--cor-1);
 }
 
 .hero {

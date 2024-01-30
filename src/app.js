@@ -1,10 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt');
 const exphbs = require('express-handlebars')
 const path = require('path')
-const app = express()
-const port = process.env.PORT || 3000
 const session = require('express-session')
+const port = process.env.PORT || 3000
+
+const mongoose = require('./config');
+
+const app = express()
 
 app.use(express.static('public'))
 
@@ -27,16 +31,55 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// Configuração de Rotas
-const authRoutes = require('./routes/authRoutes.js');
-const userRoutes = require('./routes/userRoutes.js');
-
-app.use('/auth', authRoutes);
-app.use('/user', userRoutes);
-
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.render('home')
 })
+
+app.get('/menu', (req, res) => {
+    res.render('menu')
+})
+
+app.get('/contact', (req, res) => {
+    res.render('contact')
+})
+
+app.get('/about', (req, res) => {
+    res.render('about')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/form-create-user', (req, res) => {
+    res.render('createUser', { title: 'Create a new User', session: req.session })
+})
+
+app.post('auth', (req, res) =>{
+    session: req.session;
+})
+
+app.post('/create', async (req, res) => {
+    const userData = {
+        username: req.body.username,
+        password: bcrypt.hashSync(req.body.password, 10),
+        email: req.body.email,
+    };
+
+    try {
+        const newUser = await User.create(userData);
+        console.log('New user created:', newUser);
+
+        //res.redirect('/form-create-user?success=User created successfully!');
+        req.session.successMessage = 'User created successfully!';
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+    } catch (error) {
+        console.error('Error creating user:', error.message);
+        res.status(500).send('Error creating user');
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server running in port: ${port}`)
