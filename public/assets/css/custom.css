@@ -9,20 +9,18 @@
     --cor-4: #0f1035;
 }
 
-* {
-    background-color: var(--cor-1);
+* {    
+    color: var(--cor-1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header {
-    color: var(--cor-2);
+header {
+    background-color: var(--cor-4);
+    padding: 0;
+    margin: 0;
+    
 }
 
-.footer {
-    border-top: 2px solid var(--cor-3);
-}
-
-.link {
-    text-decoration: none;
-    color: var(--cor-4);
+footer {
+    border-top: 2px solid var(--cor-4);
 }
