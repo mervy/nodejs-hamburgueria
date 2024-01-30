@@ -92,6 +92,39 @@ app.post('/create', async (req, res) => {
     }
 });
 
+app.post('/insertBurger', async (req, res) => {
+    const burgerData = {
+        title: req.body.title,
+        image: req.body.image,
+        description: req.body.description,
+        price: req.body.price,
+        promotion: req.body.promotion,
+        stock: req.body.stock,
+    };
+
+    console.log(burgerData)
+/*
+    try {
+        const newBurger = await Burger.create(userData);
+        console.log('New user created:', newUser);
+
+        //res.redirect('/form-create-user?success=User created successfully!');
+        req.session.successMessage = 'User created successfully!';
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+    } catch (error) {
+
+        req.session.errorMessage = `Error creating user:${error.message}`
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+
+        //console.error('Error creating user:', error.message);
+        //res.status(500).send('Error creating user');
+    }*/
+});
+
 app.listen(port, () => {
     console.log(`Server running in port: ${port}`)
 })
