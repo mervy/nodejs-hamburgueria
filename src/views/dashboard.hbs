@@ -1,0 +1,18 @@
+{{>header}}
+
+<div class="hero container-fluid col-xxl-8 px-4 py-5">
+    <h1>Você está na dashboard</h1>
+</div>
+
+{{#if user.email}}
+    <p>Email: {{user.email}}</p>
+{{/if}}
+
+{{#if user.password}}
+    <p>Password: {{user.password}}</p>
+{{/if}}
+
+{{user.password}}
+
+
+{{>footer}}

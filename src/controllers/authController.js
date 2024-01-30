@@ -3,7 +3,11 @@ exports.getLogin = (req, res) => {
 };
 
 exports.postLogin =  (req, res) => {
-    res.redirect('/user/dashboard');
+    const { email, password } = req.body;
+
+    return res.redirect(`/auth/login?error=authenticationfailed&email=${email}`);
+
+    //res.redirect('/user/dashboard');
 };
 
 exports.logout = (req, res) => {
