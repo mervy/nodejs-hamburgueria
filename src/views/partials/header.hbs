@@ -1,15 +1,44 @@
-<header
-    class="d-flex flex-wrap align-items-center d-flex justify-content-evenly py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-        <h1>Rafa's Hamburger</h1>
-    </div>
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="/menu" class="nav-link px-2">Menu List</a></li>
-        <li><a href="contact" class="nav-link px-2">Contact</a></li>
-        <li><a href="/about" class="nav-link px-2">About</a></li>
-        <li><a href="/login" class="nav-link px-2">Login</a></li>
-         <li><a href="/form-create-user" class="nav-link px-2">New User</a></li>
-         <li><a href="/form-create-burger" class="nav-link px-2">New burguer</a></li>
-    </ul>
-</header>
+<header class="d-flex justify-content-evenly align-items-center py-3">
+        <span>Bem vindo a nossa hamburgueria!</span>
+        <span><i class="bi bi-whatsapp" style="font-size: 1.2rem; color: rgba(9, 233, 20, 0.8);"></i> (42) 9
+            8888-8838</span>
+        <a href="https://api.whatsapp.com/send?phone=5542988888838&text=Estou%20vindo%20do%20site%20de%20hamburgueria.%20Quero%20fazer%20o%20meu%20pedido."
+            target="_blank">
+            <button type="button" class="btn btn-warning">Faça seu pedido</button>
+        </a>
+    </header>
+
+    <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <button type="button" class="btn btn-dark">
+                    <h5>Rafa's Hamburgueria</h5>
+                </button></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Sobre nós</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Busca</button>
+                </form>
+            </div>
+        </div>
+    </nav>
