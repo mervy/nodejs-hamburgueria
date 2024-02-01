@@ -7,6 +7,7 @@ const session = require('express-session')
 const port = process.env.PORT || 3000
 
 const mongoose = require('./config');
+const { User, Burger } = require('./models/burgers');
 
 const app = express()
 
@@ -55,7 +56,11 @@ app.get('/form-create-user', (req, res) => {
     res.render('createUser', { title: 'Create a new User', session: req.session })
 })
 
-app.post('auth', (req, res) =>{
+app.get('/form-create-burger', (req, res) => {
+    res.render('createBurger', { title: 'Inserir um novo burguer', session: req.session })
+})
+
+app.post('auth', (req, res) => {
     session: req.session;
 })
 
@@ -76,9 +81,48 @@ app.post('/create', async (req, res) => {
         // Redirecione para a página de criação de usuário
         res.redirect('/form-create-user');
     } catch (error) {
-        console.error('Error creating user:', error.message);
-        res.status(500).send('Error creating user');
+
+        req.session.errorMessage = `Error creating user:${error.message}`
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+
+        //console.error('Error creating user:', error.message);
+        //res.status(500).send('Error creating user');
     }
+});
+
+app.post('/insertBurger', async (req, res) => {
+    const burgerData = {
+        title: req.body.title,
+        image: req.body.image,
+        description: req.body.description,
+        price: req.body.price,
+        promotion: req.body.promotion,
+        stock: req.body.stock,
+    };
+
+    console.log(burgerData)
+/*
+    try {
+        const newBurger = await Burger.create(userData);
+        console.log('New user created:', newUser);
+
+        //res.redirect('/form-create-user?success=User created successfully!');
+        req.session.successMessage = 'User created successfully!';
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+    } catch (error) {
+
+        req.session.errorMessage = `Error creating user:${error.message}`
+
+        // Redirecione para a página de criação de usuário
+        res.redirect('/form-create-user');
+
+        //console.error('Error creating user:', error.message);
+        //res.status(500).send('Error creating user');
+    }*/
 });
 
 app.listen(port, () => {
