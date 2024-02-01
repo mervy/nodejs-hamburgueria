@@ -33,8 +33,10 @@ app.use(session({
 
 app.get('/', async (req, res) => {
     try {
-        const burger = await Burger.find().lean();
-        res.render('home', { burger });
+        const burgerCarousel = await Burger.find().limit(3).lean();
+        const burger = await Burger.find().skip(3).lean();
+        //console.log(burger)
+        res.render('home', { burgerCarousel, burger, title:"Página inicial" });
     } catch (err) {
         console.error(err);
         res.status(500).send('Erro ao listar os hambúrgueres');
