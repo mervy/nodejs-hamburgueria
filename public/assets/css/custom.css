@@ -26,5 +26,6 @@ footer {
 }
 
 .hero {
+    color: var(--cor-1);
     background-color: var(--cor-4);
 }

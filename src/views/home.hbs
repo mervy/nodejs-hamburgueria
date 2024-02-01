@@ -1,13 +1,13 @@
 {{>header}}
 
-<div class="hero container-fluid col-xxl-8 px-4 py-5">
+<div class="hero container-fluid w-100 col-xxl-8 px-4 py-1 opacity-75">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
             <img src="/assets/img/header.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
                 height="500" loading="lazy">
         </div>
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">O melhor hamburger da cidade</h1>
+        <div class="col-lg-6 text-center">
+            <h1 class="display-5 fw-bold mb-3">O melhor hamburger da cidade</h1>
             <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
                 popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
                 extensive prebuilt components, and powerful JavaScript plugins.</p>
@@ -15,5 +15,32 @@
         </div>
     </div>
 </div>
+
+<section class="container">
+    <h1 class="p-3 text-center">Welcome to Our Burger Shop</h1>
+    {{#if burger.length}}
+    <div class="row">
+        {{#each burger}}
+        <div class="col-3 border m-1">
+            <h4 class="text-center">{{this.title}}</h4>
+            <figure>
+                <img class="w-100 p-2" src="https://picsum.photos/540/320" alt="{{this.title}}">
+            </figure>
+            <p>{{this.description}}</p>          
+
+            <div class="bg-info p-3 d-flex justify-content-between">
+                {{#if this.promotion}}
+                <span>Promotion: {{this.promotion}}</span>
+                {{/if}}
+                <span>In Stock: {{this.stock}}</span> 
+                <span class="fw-bold">Price: R$ {{this.price}}</span>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>No burgers found!</p>
+    {{/if}}
+</section>
 
 {{>footer}}
