@@ -6,7 +6,7 @@ const session = require('express-session');
 const mongoose = require('./config'); // Certifique-se de que este arquivo exporta a conexão com o mongoose corretamente
 const { User, Burger } = require('./models/burgers'); // Certifique-se de que o modelo está corretamente definido
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const app = express();
 
@@ -39,6 +39,7 @@ app.get('/', async (req, res) => {
         res.render('home', { burgerCarousel, burger, title:"Página inicial" });
     } catch (err) {
         console.error(err);
+        console.log(process.env.MONGO_URI);
         res.status(500).send('Erro ao listar os hambúrgueres');
     }
 });
