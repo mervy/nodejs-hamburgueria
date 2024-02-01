@@ -35,11 +35,11 @@ app.get('/', async (req, res) => {
     try {
         const burgerCarousel = await Burger.find().limit(3).lean();
         const burger = await Burger.find().skip(3).lean();
-        //console.log(burger)
+        console.log(burger)
         res.render('home', { burgerCarousel, burger, title:"Página inicial" });
     } catch (err) {
         console.error(err);        
-        res.status(500).send(`Erro ao listar os hambúrgueres ${process.env.MONGO_URI}`);
+        res.status(500).send(`Erro ao listar os hambúrgueres`);
     }
 });
 
