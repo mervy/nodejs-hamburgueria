@@ -38,9 +38,8 @@ app.get('/', async (req, res) => {
         //console.log(burger)
         res.render('home', { burgerCarousel, burger, title:"Página inicial" });
     } catch (err) {
-        console.error(err);
-        console.log(process.env.MONGO_URI);
-        res.status(500).send('Erro ao listar os hambúrgueres');
+        console.error(err);        
+        res.status(500).send(`Erro ao listar os hambúrgueres ${process.env.MONGO_URI}`);
     }
 });
 
