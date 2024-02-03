@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
+const multer = require('multer')
 const mongoose = require('./config'); // Certifique-se de que este arquivo exporta a conexão com o mongoose corretamente
 const { User, Burger } = require('./models/burgers'); // Certifique-se de que o modelo está corretamente definido
 
@@ -21,6 +22,21 @@ app.engine('hbs', exphbs.engine({
     partialsDir: path.join(__dirname, 'views', 'partials')
 }));
 
+//Upload images
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // Constrói um caminho absoluto para o diretório de destino
+        const destPath = path.join(__dirname, '..', 'public', 'assets', 'img', 'burgers');
+        cb(null, destPath);
+    },
+    filename: function (req, file, cb) {
+        const originalName = file.originalname;
+        cb(null, originalName)
+    }
+});
+
+const upload = multer({ storage: storage });
+
 // Usando express.urlencoded para analisar corpos de solicitação URL-encoded
 app.use(express.urlencoded({ extended: false }));
 
@@ -35,10 +51,9 @@ app.get('/', async (req, res) => {
     try {
         const burgerCarousel = await Burger.find().limit(3).lean();
         const burger = await Burger.find().skip(3).lean();
-        console.log(burger)
-        res.render('home', { burgerCarousel, burger, title:"Página inicial" });
+        res.render('home', { burgerCarousel, burger, title: "Página inicial" });
     } catch (err) {
-        console.error(err);        
+        console.error(err);
         res.status(500).send(`Erro ao listar os hambúrgueres`);
     }
 });
@@ -73,10 +88,11 @@ app.post('/insert-user', async (req, res) => {
     }
 });
 
-app.post('/insert-burger', async (req, res) => {
+app.post('/insert-burger', upload.single('image'), async (req, res) => {
+    //app.post('/insert-burger', async (req, res) => {
     const burgerData = {
         title: req.body.title,
-        image: req.body.image,
+        image: req.file.filename,
         description: req.body.description,
         price: req.body.price,
         promotion: req.body.promotion,
