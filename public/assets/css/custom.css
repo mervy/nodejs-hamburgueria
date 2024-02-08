@@ -9,7 +9,7 @@
     --cor-4: #0f1035;
 }
 
-* {   
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -28,4 +28,8 @@ footer {
 .hero {
     color: var(--cor-1);
     background-color: var(--cor-4);
+}
+
+.card {
+    min-height: 430px;
 }
